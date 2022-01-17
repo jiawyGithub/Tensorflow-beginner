@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
  
 #载入数据集
-mnist=input_data.read_data_sets("../../datasets/MNIST", one_hot=True) # 路径
+mnist=input_data.read_data_sets("../datasets/MNIST", one_hot=True) # 路径
  
 # 设置超参
 batch_size=100 # 每个批次的大小
