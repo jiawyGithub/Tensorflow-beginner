@@ -22,7 +22,7 @@ prediction=tf.nn.softmax(tf.matmul(x,W)+b)
 #二次代价函数
 loss=tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=prediction))
 #使用梯度下降法
-trian_step=tf.train.GradientDescentOptimizer(0.2).minimize(loss)
+train_step=tf.train.GradientDescentOptimizer(0.2).minimize(loss)
 
 #初始化变量
 init=tf.global_variables_initializer()
@@ -39,7 +39,7 @@ with tf.Session() as sess:
     for epoch in range(11):
         for batch in range(n_batch):
             batch_xs,batch_ys=mnist.train.next_batch(batch_size)
-            sess.run(trian_step,feed_dict={x:batch_xs,y:batch_ys})
+            sess.run(train_step,feed_dict={x:batch_xs,y:batch_ys})
 
         acc=sess.run(accuracy,feed_dict={x:mnist.test.images,y:mnist.test.labels})
         print("Iter"+str(epoch)+",Testing Accuracy "+str(acc))
